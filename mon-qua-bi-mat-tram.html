@@ -2,6 +2,9 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="theme-color" content="#bae6fd">
         <title>Món quà bí mật dành tặng cho Trâm</title>
         <style>
             * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -15,7 +18,7 @@
                 align-items: center;
                 justify-content: center;
                 overflow: hidden;
-                font-family: sans-serif;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             }
             @keyframes gradShift {
                 0%   { background-position: 0% 50%; }
@@ -25,15 +28,15 @@
 
             .github-corner {
                 position: fixed;
-                top: 20px;
-                right: 20px;
+                top: 12px;
+                right: 12px;
                 z-index: 1000;
                 display: flex;
                 align-items: center;
-                gap: 8px;
+                gap: 6px;
                 background: rgba(255, 255, 255, 0.85);
                 backdrop-filter: blur(5px);
-                padding: 10px 16px;
+                padding: 7px 12px;
                 border-radius: 50px;
                 box-shadow: 0 4px 15px rgba(2, 132, 199, 0.2);
                 border: 1.5px solid #38bdf8;
@@ -48,7 +51,7 @@
             }
             .github-corner svg { fill: #0284c7; transition: transform 0.3s; }
             .github-corner:hover svg { transform: rotate(15deg); }
-            .github-text { font-size: 0.85rem; font-weight: bold; color: #0284c7; }
+            .github-text { font-size: 0.72rem; font-weight: bold; color: #0284c7; }
             @keyframes floatBadge {
                 0%, 100% { transform: translateY(0); }
                 50% { transform: translateY(-5px); }
@@ -74,7 +77,10 @@
                 z-index: 10;
                 text-align: center;
                 animation: popIn 0.8s cubic-bezier(0.175,0.885,0.32,1.275);
-                padding: 20px;
+                padding: 60px 16px 24px;
+                width: 100%;
+                max-width: 480px;
+                margin: 0 auto;
             }
             @keyframes popIn {
                 from { transform: scale(0.5); opacity: 0; }
@@ -94,7 +100,7 @@
                 margin-bottom: 2px;
             }
             .hero-name {
-                font-size: 2.6rem;
+                font-size: clamp(2rem, 10vw, 2.6rem);
                 font-weight: 900;
                 background: linear-gradient(135deg, #0284c7, #38bdf8, #34d399);
                 -webkit-background-clip: text;
@@ -105,7 +111,7 @@
                 filter: drop-shadow(0 2px 8px rgba(2,132,199,0.25));
             }
             .hero-sub {
-                font-size: 0.82rem;
+                font-size: 0.75rem;
                 color: #0369a1;
                 margin-top: 4px;
                 font-style: italic;
@@ -131,7 +137,7 @@
             }
 
             img {
-                width: 180px;
+                width: clamp(120px, 38vw, 180px);
                 filter: drop-shadow(0 12px 32px rgba(3,105,161,0.3));
                 animation: giftBounce 2s ease-in-out infinite; border-radius: 50%; object-fit: cover;
                 cursor: pointer;
@@ -161,13 +167,14 @@
             .countdown-box {
                 background: linear-gradient(135deg, #38bdf8, #0284c7);
                 border-radius: 12px;
-                padding: 8px 10px;
-                min-width: 56px;
+                padding: 8px 6px;
+                min-width: 52px;
+                flex: 1;
                 color: white;
                 box-shadow: 0 4px 12px rgba(2,132,199,0.3);
             }
-            .countdown-box .num { font-size: 1.5rem; font-weight: bold; line-height: 1; }
-            .countdown-box .unit { font-size: 0.62rem; opacity: 0.9; margin-top: 2px; }
+            .countdown-box .num { font-size: clamp(1.2rem, 5vw, 1.5rem); font-weight: bold; line-height: 1; }
+            .countdown-box .unit { font-size: 0.6rem; opacity: 0.9; margin-top: 2px; }
             .countdown-done { color: #0284c7; font-weight: bold; font-size: 1rem; }
 
             /* Button row */
@@ -175,21 +182,23 @@
                 display: flex;
                 gap: 10px;
                 justify-content: center;
-                flex-wrap: wrap;
+                flex-wrap: nowrap;
                 margin-top: 14px;
+                width: 100%;
             }
 
             .btn-open {
                 display: inline-block;
-                padding: 14px 28px;
+                padding: 14px 20px;
                 background: linear-gradient(135deg, #38bdf8, #0284c7);
                 color: #fff;
                 border: none;
                 border-radius: 50px;
-                font-size: 1rem;
+                font-size: 0.95rem;
                 font-weight: bold;
                 cursor: pointer;
                 animation: btnPulse 2s ease infinite;
+                flex: 1;
             }
             .btn-open.locked {
                 background: linear-gradient(135deg, #ccc, #aaa);
@@ -200,16 +209,17 @@
 
             .btn-schedule {
                 display: inline-block;
-                padding: 14px 28px;
+                padding: 14px 20px;
                 background: linear-gradient(135deg, #34d399, #059669);
                 color: #fff;
                 border: none;
                 border-radius: 50px;
-                font-size: 1rem;
+                font-size: 0.95rem;
                 font-weight: bold;
                 cursor: pointer;
                 animation: btnPulse2 2s ease infinite;
                 box-shadow: 0 6px 24px rgba(5,150,105,0.35);
+                flex: 1;
             }
 
             @keyframes btnPulse {
@@ -242,14 +252,15 @@
             }
             .letter-card {
                 background: rgba(240,249,255,0.98);
-                border-radius: 24px;
-                padding: 36px 28px;
+                border-radius: 20px;
+                padding: 24px 18px;
                 max-width: 500px;
                 width: 100%;
                 max-height: 88vh;
                 overflow-y: auto;
                 box-shadow: 0 12px 60px rgba(3,105,161,0.25);
                 border: 2px solid #7dd3fc;
+                -webkit-overflow-scrolling: touch;
             }
             .btn-close {
                 margin-top: 20px;
@@ -280,14 +291,15 @@
             .schedule-overlay.show { display: flex; animation: fadeIn 0.4s ease; }
             .schedule-card {
                 background: rgba(240,249,255,0.98);
-                border-radius: 24px;
-                padding: 28px 20px;
+                border-radius: 20px;
+                padding: 20px 14px;
                 max-width: 560px;
                 width: 100%;
                 max-height: 90vh;
                 overflow-y: auto;
                 box-shadow: 0 12px 60px rgba(3,105,161,0.25);
                 border: 2px solid #34d399;
+                -webkit-overflow-scrolling: touch;
             }
             .schedule-card h2 {
                 color: #059669;
@@ -298,7 +310,7 @@
             .schedule-table {
                 width: 100%;
                 border-collapse: collapse;
-                font-size: 0.82rem;
+                font-size: 0.75rem;
             }
             .schedule-table th {
                 background: linear-gradient(135deg, #34d399, #059669);
